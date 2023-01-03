@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('skateparks', {
+    await queryInterface.createTable('locations', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,15 +12,6 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      address: {
-        type: Sequelize.STRING
-      },
-      bmx: {
-        type: Sequelize.STRING
-      },
-      geolocation: {
-        type: GEOGRAPHY.
-      }
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -32,6 +23,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('skateparks');
+    await queryInterface.dropTable('locations');
   }
 };
