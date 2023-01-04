@@ -12,6 +12,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      geolocation: {
+        type: GEOGRAPHY.POINT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

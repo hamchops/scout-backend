@@ -1,9 +1,9 @@
-const { Skateparks } = require ('../models')
+const { Skateparks, Locations } = require ('../models')
 const skateparks = require('../models/skateparks')
 
 const GetParks = async (req, res) => {
     try {
-        const parks = await Skateparks.findAll()
+        const skateparks = await Skateparks.findAll()
         res.send(skateparks)
     } catch (error) {
         throw error
@@ -12,10 +12,10 @@ const GetParks = async (req, res) => {
 
 const GetAllParksLocation = async (req, res) => {
     try {
-        const GetAllParksLocation = await Product.findAll ({
-            include: {model: Skateparks, as: 'skateparks'}
+        const allParksLocation = await Skateparks.findAll ({
+            include: {model: Locations, as: 'location'}
         })
-        res.send(GetAllParksLocation)
+        res.send(allParksLocation)
     } catch (error) {
         throw error
     }

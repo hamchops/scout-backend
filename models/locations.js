@@ -1,23 +1,38 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class locations extends Model {
+  class Locations extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Locations.belongsTo(models.Skateparks, {
+        foreignKey: 'skateparks_id',
+        as: 'location',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      })
     }
   }
-  locations.init({
-    name: DataTypes.STRING
+  Locations.init({
+    name: DataTypes.STRING,
+    skateparks_id: {
+      type: DataTypes.INTEGER,
+      // allowNull: false,
+      // field: 'skateparks_id',
+      onDelete: 'CASCADE',
+      references: {
+        model: 'skateparks',
+        key: 'id'
+      }
+    },
+    geolocation: DataTypes.GEOGRAPHY
   }, {
     sequelize,
-    modelName: 'locations',
+    modelName: 'Locations',
+    tableName: 'locations'
   });
-  return locations;
+  return Locations;
 };

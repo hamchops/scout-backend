@@ -5,3 +5,5 @@ Router.get('/', controller.GetParks)
 Router.get('/skateparks', controller.GetAllParksLocation)
 
 Router.get('/',controller)
+
+module.exports = Router

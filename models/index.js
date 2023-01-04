@@ -8,6 +8,9 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
+// const Locations = require ('./locations')
+// const Skateparks = require ('./skateparks')
+
 
 let sequelize;
 if (config.use_env_variable) {
@@ -32,7 +35,14 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
+// Skateparks.hasMany(models.Locations, {foreignKey: 'skateparks_id', as: 'Locations'})
+// Locations.belongsTo(models.Skateparks, {foreignKey: 'skateparks_id', as: 'Skateparks'})
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+module.exports = {
+  db,
+  // Locations,
+  // Skateparks
+}

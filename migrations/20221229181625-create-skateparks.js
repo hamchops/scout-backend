@@ -19,8 +19,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       geolocation: {
-        type: GEOGRAPHY.
-      }
+        type: GEOGRAPHY.POINT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -28,6 +28,14 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      skateparks_id: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Skateparks',
+          key: 'id'
+        }
       }
     });
   },
